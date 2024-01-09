@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = activityMainBinding.getRoot();
         setContentView(view);
-
+        //First time loading :
         loadNextAdvice();
 
+        //next load to tap button :
         activityMainBinding.nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Share button working :
         activityMainBinding.shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,11 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Main api callig :
     private void loadNextAdvice() {
         activityMainBinding.loadingProgressBar.setVisibility(View.VISIBLE);
         RequestQueue queue = Volley.newRequestQueue(this);
+
         String url = "https://api.adviceslip.com/advice";
-        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
